@@ -1,0 +1,10 @@
+.vs/*
+
+ServerApplication/bin/*
+ServerApplication/obj/*
+ServerApplication/bin/Debug/*
+ServerApplication/obj/Debug/*
+
+appsettings.Development.json
+
+BVPMInternetShop.sln.DotSettings.user
