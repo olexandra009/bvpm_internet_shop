@@ -1,4 +1,8 @@
 .vs/*
+DataShopEntityFramework/bin/*
+DataShopEntityFramework/obj/*
+DataShopEntityFramework/bin/Debug/*
+DataShopEntityFramework/obj/Debug/*
 
 ServerApplication/bin/*
 ServerApplication/obj/*
