@@ -4,7 +4,7 @@ using Ardalis.Specification;
 
 namespace DataShopEntityFramework.Repositories.Common
 {
-    interface IRepository<TEntity> where TEntity: class
+    public interface IRepository<TEntity> where TEntity: class
     {
         Task<TEntity> AddAsync(TEntity entity);
 
