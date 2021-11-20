@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using Ardalis.Specification;
 
-namespace DataShopEntityFramework.Repositories
+namespace DataShopEntityFramework.Repositories.Common
 {
     interface IRepository<TEntity> where TEntity: class
     {
@@ -16,14 +17,10 @@ namespace DataShopEntityFramework.Repositories
 
         Task<TEntity> GetByIdAsync(int id);
 
-        Task<TEntity> GetByIdAsync<TId>(TId id);
-
         Task<List<TEntity>> ListAsync();
-        /*
-            Task<List<TEntity>> ListAsync(ISpecification<TEntity> specification);
-            Task<int> CountAsync(ISpecification<TEntity> specification);
-            Task DeleteRangeAsync(IEnumerable<TEntity> entities);
-        */
+        
+        Task<List<TEntity>> ListAsync(ISpecification<TEntity> specification); 
+        Task<int> CountAsync(ISpecification<TEntity> specification);
 
     }
 }
