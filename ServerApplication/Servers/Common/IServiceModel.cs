@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ardalis.Specification;
 
 namespace ServerApplication.Servers.Common
 {
@@ -14,13 +15,11 @@ namespace ServerApplication.Servers.Common
         Task<bool> Exist(int id);
         Task<List<TModel>> List();
        
-        /*TODO: decide with specification*/
-        /*
+   
         Task<List<TModel>> List(PagedSortListQuery query);
         Task<int> Count(PagedSortListQuery query);
         Task<List<TModel>> List(ISpecification<TEntity> specification);
         Task<int> Count(ISpecification<TEntity> specification);
-         */
 
     }
 }
