@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ardalis.Specification;
+using ServerApplication.Specifications;
 
 namespace ServerApplication.Servers.Common
 {
@@ -14,8 +15,6 @@ namespace ServerApplication.Servers.Common
         Task Delete(int id);
         Task<bool> Exist(int id);
         Task<List<TModel>> List();
-       
-   
         Task<List<TModel>> List(PagedSortListQuery query);
         Task<int> Count(PagedSortListQuery query);
         Task<List<TModel>> List(ISpecification<TEntity> specification);
