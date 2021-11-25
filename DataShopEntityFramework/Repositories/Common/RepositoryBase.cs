@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 namespace DataShopEntityFramework.Repositories.Common
 {
     public class RepositoryBase<TEntity>: IRepository<TEntity>
-        where TEntity : DBModel
+        where TEntity : class
     {
         protected readonly DbContext _dbContext;
         public async Task<TEntity> AddAsync(TEntity entity)
