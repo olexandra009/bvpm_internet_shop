@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataShopEntityFramework.Entities
 {
-    class DBModel
+    public class DBModel
     {
         public int Id { get; }
     }
