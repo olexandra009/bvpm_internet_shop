@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using DataShopEntityFramework.Entities;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerApplication.Controllers.Common;
 using ServerApplication.DTO;
@@ -17,8 +18,11 @@ namespace ServerApplication.Controllers
     [ApiController]
     public class OrderController : CrudControllerBase<OrderDto, OrderModel, Order>
     {
+        protected IOrderService OrderService;
         public OrderController(IOrderService service, IMapper mapper) : base(service, mapper)
         {
+            OrderService = service;
         }
+        
     }
 }

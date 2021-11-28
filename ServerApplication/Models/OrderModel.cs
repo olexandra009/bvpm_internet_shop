@@ -13,5 +13,7 @@ namespace ServerApplication.Models
         public string ClientPhoneNum { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
+        public List<OrderDetailsModel> Details { get; set; }
+
     }
 }
