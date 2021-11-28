@@ -13,12 +13,16 @@ namespace ServerApplication.Configurations
         {
             builder.RegisterType<CategoryRepository>()
                 .As<ICategoryRepository>().InstancePerLifetimeScope();
+           
             builder.RegisterType<OrderDetailRepository>()
                 .As<IOrderDetailRepository>().InstancePerLifetimeScope();
+            
             builder.RegisterType<OrderRepository>()
                 .As<IOrderRepository>().InstancePerLifetimeScope();
+            
             builder.RegisterType<ProductRepository>()
                 .As<IProductRepository>().InstancePerLifetimeScope();
+            
             builder.RegisterType<ReviewRepository>()
                 .As<IReviewRepository>().InstancePerLifetimeScope();
         }

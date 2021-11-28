@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using DataShopEntityFramework.Entities;
+using DataShopEntityFramework.Repositories;
 using DataShopEntityFramework.Repositories.Common;
 using ServerApplication.Models;
 using ServerApplication.Services.Common;
@@ -15,7 +16,7 @@ namespace ServerApplication.Services
     }
     public class OrderService : ServiceModel<OrderModel, Order>, IOrderService
     {
-        public OrderService(IMapper mapper, IRepository<Order> repository) : base(mapper, repository)
+        public OrderService(IMapper mapper, IOrderRepository repository) : base(mapper, repository)
         {
         }
     }

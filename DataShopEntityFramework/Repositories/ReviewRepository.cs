@@ -14,7 +14,7 @@ namespace DataShopEntityFramework.Repositories
     }
     public class ReviewRepository:RepositoryBase<Review>, IReviewRepository
     {
-        public ReviewRepository(DbContext dbContext) : base(dbContext)
+        public ReviewRepository(ShopDBContext dbContext) : base(dbContext)
         {
         }
     }

@@ -14,7 +14,7 @@ namespace DataShopEntityFramework.Repositories
     }
     public class ProductRepository:RepositoryBase<Product>, IProductRepository
     {
-        public ProductRepository(DbContext dbContext) : base(dbContext)
+        public ProductRepository(ShopDBContext dbContext) : base(dbContext)
         {
         }
     }

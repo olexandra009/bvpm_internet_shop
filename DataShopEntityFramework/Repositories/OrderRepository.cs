@@ -14,7 +14,7 @@ namespace DataShopEntityFramework.Repositories
     }
     public class OrderRepository: RepositoryBase<Order>, IOrderRepository
     {
-        public OrderRepository(DbContext dbContext) : base(dbContext)
+        public OrderRepository(ShopDBContext dbContext) : base(dbContext)
         {
         }
     }
