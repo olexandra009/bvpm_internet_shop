@@ -11,7 +11,11 @@ namespace DataShopEntityFramework.Repositories.Common
     public class RepositoryBase<TEntity>: IRepository<TEntity>
         where TEntity : class
     {
-        protected readonly DbContext _dbContext;
+        protected readonly DbContext _dbContext; 
+        public RepositoryBase(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
         public async Task<TEntity> AddAsync(TEntity entity)
         {
             _dbContext.Set<TEntity>().Add(entity);
