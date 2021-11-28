@@ -5,7 +5,8 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ServerApplication.Models;
-using ServerApplication.Servers.Common;
+using ServerApplication.Services;
+using ServerApplication.Services.Common;
 using ServerApplication.Specifications;
 
 namespace ServerApplication.Controllers.Common
@@ -23,6 +24,7 @@ namespace ServerApplication.Controllers.Common
             Service = service;
             Mapper = mapper;
         }
+
 
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
