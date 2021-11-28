@@ -14,9 +14,7 @@ namespace ServerApplication.Controllers.Common
         where TModel: IModel
         where TEntity: class
     {
-        //TODO: Add mapper
-        //TODO: Implement methods
-        //TODO: Paging? and list result 
+        
         protected readonly IServiceModel<TModel, TEntity> Service;
         protected readonly IMapper Mapper;
 

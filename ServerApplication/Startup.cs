@@ -11,8 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
 using DataShopEntityFramework.Entities;
 using Microsoft.EntityFrameworkCore;
+using ServerApplication.Configurations;
 
 namespace ServerApplication
 {
@@ -31,6 +33,10 @@ namespace ServerApplication
             services.AddDbContext<ShopDBContext>(options =>
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddAutoMapper((configuration) => configuration.AddProfile<MappingProfile>(),
+                typeof(Startup)); // scan and register automapper profiles in this assembly
+
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -38,6 +44,19 @@ namespace ServerApplication
             });
         }
 
+        // ConfigureContainer is where you can register things directly
+        // with Autofac. This runs after ConfigureServices so the things
+        // here will override registrations made in ConfigureServices.
+        // Don't build the container; that gets done for you by the factory.
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // Register your own things directly with Autofac here. Don't
+            // call builder.Populate(), that happens in AutofacServiceProviderFactory
+            // for you.
+            builder.RegisterModule(new RepositoryAutofacModule());
+            builder.RegisterModule(new ServicesAutofacModule());
+
+        }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
