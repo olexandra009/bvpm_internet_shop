@@ -8,7 +8,7 @@ using ServerApplication.Specifications;
 using DataShopEntityFramework.Repositories.Common;
 using ServerApplication.Models;
 
-namespace ServerApplication.Servers.Common
+namespace ServerApplication.Services.Common
 {
     public class ServiceModel<TModel, TEntity>:IServiceModel<TModel, TEntity>
     where TEntity: class

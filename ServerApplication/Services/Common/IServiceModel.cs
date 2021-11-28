@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Ardalis.Specification;
 using ServerApplication.Specifications;
 
-namespace ServerApplication.Servers.Common
+namespace ServerApplication.Services.Common
 {
     public interface IServiceModel<TModel, TEntity>
     {

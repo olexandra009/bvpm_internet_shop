@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
+using ServerApplication.Services;
 
 namespace ServerApplication.Configurations
 {
@@ -10,7 +7,16 @@ namespace ServerApplication.Configurations
     {
         protected override void Load(ContainerBuilder builder)
         {
-
+            builder.RegisterType<CategoryService>()
+                .As<ICategoryService>().InstancePerLifetimeScope();
+            builder.RegisterType<OrderDetailsService>()
+                .As<IOrderDetailsService>().InstancePerLifetimeScope();
+            builder.RegisterType<OrderService>()
+                .As<IOrderService>().InstancePerLifetimeScope();
+            builder.RegisterType<ProductService>()
+                .As<IProductService>().InstancePerLifetimeScope();
+            builder.RegisterType<ReviewService>()
+                .As<IReviewService>().InstancePerLifetimeScope();
         }
     }
 }
