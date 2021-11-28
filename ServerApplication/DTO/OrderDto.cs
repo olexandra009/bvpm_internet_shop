@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ServerApplication.Models
+namespace ServerApplication.DTO
 {
-    public class OrderModel : IModel
+    public class OrderDto
     {
         public int Id { get; set; }
         public string ClientName { get; set; }
