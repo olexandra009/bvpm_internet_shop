@@ -43,9 +43,7 @@ namespace DataShopEntityFramework.Entities
                 entity.HasIndex(e => e.Id, "category_id_uindex")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Description)
                     .HasColumnType("character varying")
@@ -55,6 +53,8 @@ namespace DataShopEntityFramework.Entities
                     .IsRequired()
                     .HasColumnType("character varying")
                     .HasColumnName("name");
+
+                entity.Property(e => e.NewColumn).HasColumnName("new_column");
             });
 
             modelBuilder.Entity<Order>(entity =>
@@ -64,9 +64,7 @@ namespace DataShopEntityFramework.Entities
                 entity.HasIndex(e => e.Id, "orders_id_uindex")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Address)
                     .HasColumnType("character varying")
@@ -114,9 +112,7 @@ namespace DataShopEntityFramework.Entities
                 entity.HasIndex(e => e.Id, "products_id_uindex")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Amount).HasColumnName("amount");
 
@@ -145,9 +141,7 @@ namespace DataShopEntityFramework.Entities
                 entity.HasIndex(e => e.Id, "reviews_id_uindex")
                     .IsUnique();
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.IdProduct).HasColumnName("id_product");
 
