@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DataShopEntityFramework.Entities
 {
-    public partial class Product
+    public class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -14,5 +14,10 @@ namespace DataShopEntityFramework.Entities
         public string Description { get; set; }
         public string Photo { get; set; }
         public int IdCategory { get; set; }
+
+        public List<Review> Reviews { get; set; }
+        public List<OrderDetail> Orders { get; set; }
+        public Category Category { get; set; }
+
     }
 }

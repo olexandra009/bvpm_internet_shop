@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace DataShopEntityFramework.Entities
 {
-    public partial class Order
+    public class Order
     {
         public int Id { get; set; }
         public string ClientName { get; set; }
@@ -13,5 +13,6 @@ namespace DataShopEntityFramework.Entities
         public string ClientPhoneNum { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
+        public List<OrderDetail> Details { get; set; }
     }
 }
