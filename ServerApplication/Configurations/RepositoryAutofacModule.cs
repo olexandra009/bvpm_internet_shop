@@ -17,7 +17,7 @@ namespace ServerApplication.Configurations
                 _instance = new RepositoryAutofacModule();
             return _instance;
         }
-        private RepositoryAutofacModule() :base()
+        private RepositoryAutofacModule()
         {
             
         }

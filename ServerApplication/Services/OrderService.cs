@@ -22,36 +22,12 @@ namespace ServerApplication.Services
     }
     public class OrderService : ServiceModel<OrderModel, Order>, IOrderService
     {
-        protected IOrderDetailsService OrderDetailsService;
+      
         protected IProductService ProductService;
-        public OrderService(IMapper mapper, IOrderRepository repository, IProductService productService, IOrderDetailsService orderDetailsService) : base(mapper, repository)
+        public OrderService(IMapper mapper, IOrderRepository repository, IProductService productService) : base(mapper, repository)
         {
-            OrderDetailsService = orderDetailsService;
+           
             ProductService = productService;
-        }
-
-        public override async Task<OrderModel> Get(int id)
-        {
-            var result = await base.Get(id);
-            var details = await OrderDetailsService.List(new GetOrderDetailSpecification(result.Id));
-            result.Details = details;
-            return result;
-        }
-
-        public override async Task<List<OrderModel>> List()
-        {
-            var result = await base.List();
-            foreach (var order in result)
-                order.Details= await OrderDetailsService.List(new GetOrderDetailSpecification(order.Id));
-            return result;
-        }
-
-        public override async Task<List<OrderModel>> List(ISpecification<Order> specification)
-        {
-            var result =  await base.List(specification);
-            foreach (var order in result)
-                order.Details = await OrderDetailsService.List(new GetOrderDetailSpecification(order.Id));
-            return result;
         }
 
         public override async Task<OrderModel> Create(OrderModel model)

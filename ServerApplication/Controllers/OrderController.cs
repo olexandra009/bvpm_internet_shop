@@ -11,6 +11,7 @@ using ServerApplication.DTO;
 using ServerApplication.Models;
 using ServerApplication.Services;
 using ServerApplication.Services.Common;
+using ServerApplication.Specifications;
 
 namespace ServerApplication.Controllers
 {
@@ -19,10 +20,31 @@ namespace ServerApplication.Controllers
     public class OrderController : CrudControllerBase<OrderDto, OrderModel, Order>
     {
         protected IOrderService OrderService;
-        public OrderController(IOrderService service, IMapper mapper) : base(service, mapper)
+        protected IOrderDetailsService OrderDetailsService;
+        public OrderController(IOrderService service, IOrderDetailsService orderDetailsService, IMapper mapper) : base(service, mapper)
         {
             OrderService = service;
+            OrderDetailsService = orderDetailsService;
         }
-        
+
+        public override async Task<ActionResult<OrderDto>> Get(int id)
+        {
+            var orderResult=await base.Get(id);
+            var rows = await OrderDetailsService.List(new GetOrderDetailSpecification(id));
+            orderResult.Value.Details = Mapper.Map<List<OrderDetailDto>>(rows);
+            return orderResult;
+        }
+
+        public override async Task<ListResult<OrderDto>> GetList(PagedSortListQuery query)
+        {
+             var result = await base.GetList(query);
+             foreach (var orderDto in result.Result)
+             {
+                 orderDto.Details =
+                     Mapper.Map<List<OrderDetailDto>>(
+                         await OrderDetailsService.List(new GetOrderDetailSpecification(orderDto.Id)));
+             }
+             return result;
+        }
     }
 }

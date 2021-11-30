@@ -14,7 +14,7 @@ namespace ServerApplication.Configurations
             return _instance;
         }
 
-        private ServicesAutofacModule():base()
+        private ServicesAutofacModule()
         {
             
         }

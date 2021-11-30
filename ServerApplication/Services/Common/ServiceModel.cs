@@ -49,7 +49,7 @@ namespace ServerApplication.Services.Common
             return result;
         }
 
-        public async Task Delete(int id)
+        public virtual async Task Delete(int id)
         {
             TEntity entity = await Repository.GetByIdAsync(id).ConfigureAwait(false);
             if (entity != null)
