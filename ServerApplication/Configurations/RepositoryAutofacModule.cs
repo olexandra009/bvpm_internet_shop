@@ -9,6 +9,18 @@ namespace ServerApplication.Configurations
 {
     public class RepositoryAutofacModule : Module
     {
+        private static RepositoryAutofacModule _instance;
+
+        public static RepositoryAutofacModule GetInstance()
+        {
+            if (_instance == null)
+                _instance = new RepositoryAutofacModule();
+            return _instance;
+        }
+        private RepositoryAutofacModule() :base()
+        {
+            
+        }
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<CategoryRepository>()

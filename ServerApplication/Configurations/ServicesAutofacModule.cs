@@ -5,6 +5,20 @@ namespace ServerApplication.Configurations
 {
     public class ServicesAutofacModule : Module
     {
+        private static ServicesAutofacModule _instance;
+
+        public static ServicesAutofacModule GetInstance()
+        {
+            if (_instance == null)
+                _instance = new ServicesAutofacModule();
+            return _instance;
+        }
+
+        private ServicesAutofacModule():base()
+        {
+            
+        }
+
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<CategoryService>()

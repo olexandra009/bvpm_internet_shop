@@ -49,8 +49,8 @@ namespace ServerApplication
             // Register your own things directly with Autofac here. Don't
             // call builder.Populate(), that happens in AutofacServiceProviderFactory
             // for you.
-            builder.RegisterModule(new RepositoryAutofacModule());
-            builder.RegisterModule(new ServicesAutofacModule());
+            builder.RegisterModule(RepositoryAutofacModule.GetInstance());
+            builder.RegisterModule(ServicesAutofacModule.GetInstance());
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
