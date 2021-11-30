@@ -16,11 +16,9 @@ namespace DataShopEntityFramework.EntityConfiguration
             entity.ToTable("order_detail");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Amount).HasColumnName("amount");
-
-            entity.Property(e => e.IdOrder).HasColumnName("id_order");
-
-            entity.Property(e => e.IdProduct).HasColumnName("id_product");
+            entity.Property(e => e.Amount).HasColumnName("amount").IsRequired();
+            entity.Property(e => e.IdOrder).HasColumnName("id_order").IsRequired();
+            entity.Property(e => e.IdProduct).HasColumnName("id_product").IsRequired();
         }
     }
 }

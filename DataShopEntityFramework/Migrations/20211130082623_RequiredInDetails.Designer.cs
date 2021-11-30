@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataShopEntityFramework.Migrations
 {
     [DbContext(typeof(ShopDBContext))]
-    [Migration("20211129191726_Initial")]
-    partial class Initial
+    [Migration("20211130082623_RequiredInDetails")]
+    partial class RequiredInDetails
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

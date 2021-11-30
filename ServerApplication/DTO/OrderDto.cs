@@ -13,6 +13,7 @@ namespace ServerApplication.DTO
         public string ClientPhoneNum { get; set; }
         public string Address { get; set; }
         public string Description { get; set; }
+        public double Cost { get; set; }
         public List<OrderDetailDto> Details { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using DataShopEntityFramework.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DataShopEntityFramework.Migrations
 {
     [DbContext(typeof(ShopDBContext))]
-    partial class ShopDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211129194720_CreateDB")]
+    partial class CreateDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,10 +66,6 @@ namespace DataShopEntityFramework.Migrations
                     b.Property<string>("ClientPhoneNum")
                         .HasColumnType("character varying")
                         .HasColumnName("client_phone_num");
-
-                    b.Property<double>("Cost")
-                        .HasColumnType("double precision")
-                        .HasColumnName("cost");
 
                     b.Property<string>("Description")
                         .HasColumnType("character varying")

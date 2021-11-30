@@ -38,6 +38,9 @@ namespace DataShopEntityFramework.EntityConfiguration
                 .HasColumnType("character varying")
                 .HasColumnName("description");
 
+            entity.Property(e => e.Cost)
+                .HasColumnName("cost");
+
             entity.HasMany(o => o.Details)
                 .WithOne(p => p.Order)
                 .HasForeignKey(p => p.IdOrder)

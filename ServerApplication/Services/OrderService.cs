@@ -23,9 +23,11 @@ namespace ServerApplication.Services
     public class OrderService : ServiceModel<OrderModel, Order>, IOrderService
     {
         protected IOrderDetailsService OrderDetailsService;
-        public OrderService(IMapper mapper, IOrderRepository repository, IOrderDetailsService orderDetailsService) : base(mapper, repository)
+        protected IProductService ProductService;
+        public OrderService(IMapper mapper, IOrderRepository repository, IProductService productService, IOrderDetailsService orderDetailsService) : base(mapper, repository)
         {
             OrderDetailsService = orderDetailsService;
+            ProductService = productService;
         }
 
         public override async Task<OrderModel> Get(int id)
@@ -54,14 +56,21 @@ namespace ServerApplication.Services
 
         public override async Task<OrderModel> Create(OrderModel model)
         {
-            var result = await base.Create(model);
+            double orderCost = 0;
             foreach (var row in model.Details)
             {
-                row.IdOrder = result.Id;
-                await OrderDetailsService.Create(row);
+                var productModel = await ProductService.Get(row.IdProduct);
+                if (productModel.Amount < row.Amount)
+                    row.Amount = (double) productModel.Amount;
+                productModel.Amount = productModel.Amount - row.Amount;
+                await ProductService.Update(productModel);
+                if (productModel.Price != null)
+                    orderCost += ((double) productModel.Price * row.Amount);
+             
             }
 
-            result.Details = model.Details;
+            model.Cost = orderCost;
+            var result = await base.Create(model);
             return result;
         }
     }
